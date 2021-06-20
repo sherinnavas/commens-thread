@@ -4,8 +4,7 @@ A project with the following APIS:
 1. List All Comments Under A post
 2. Add new comment/reply 
 3. Edit existing comment
-4. Create Support Tickets
-5. Delete the full comment and its replies
+4. Delete the full comment and its replies
 
 ## Steps To Run the Project
 
