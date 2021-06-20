@@ -58,3 +58,31 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_full_name(self):
         return self.first_name+self.last_name
+
+#Abstract Class for Common fields in Post and comments
+class CommonInfo(models.Model):
+    title = models.CharField(max_length=200)
+    body = models.TextField()
+    author = models.ForeignKey('User',on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        abstract=True
+
+
+#Post
+class Post(CommonInfo):
+
+    def __str__(self):
+        return self.title
+
+
+#Comments
+class Comments(CommonInfo):
+    post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
+
+
+    def __str__(self):
+        return self.title
